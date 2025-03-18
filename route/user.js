@@ -50,7 +50,7 @@ router.post("/login", async (req, res)=>{
             res.cookie("token", token,{
                 httpOnly: true,
                 secure: true,
-                sameSite: "Strict",
+                sameSite: "none",
                 maxAge: 60*60*1000
             })
             return res.status(200).json({message: "Succesfully Logged in", success: true, userId: isUser._id}); 
@@ -87,7 +87,7 @@ router.post("/logout", (req, res) =>{
     res.clearCookie("token", {
         httpOnly: true,
         secure: true,
-        sameSite: "strict"
+        sameSite: "none"
     })
     return res.status(200).json({message: "Logged out successfully", success: true})
 })
