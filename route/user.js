@@ -49,7 +49,7 @@ router.post("/login", async (req, res)=>{
             const token = jwt.sign({userId: isUser._id}, process.env.JWT_SECRET_KEY, {expiresIn: "1h"})
             res.cookie("token", token,{
                 httpOnly: true,
-                secure: false,
+                secure: true,
                 sameSite: "Strict",
                 maxAge: 60*60*1000
             })
@@ -86,7 +86,7 @@ router.put("/update/password", async(req, res)=>{
 router.post("/logout", (req, res) =>{
     res.clearCookie("token", {
         httpOnly: true,
-        secure: false,
+        secure: true,
         sameSite: "strict"
     })
     return res.status(200).json({message: "Logged out successfully", success: true})
