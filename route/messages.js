@@ -13,7 +13,6 @@ router.get('/messages/:senderId/:receiverId', async (req, res)=>{
                 { senderId: receiverId, receiverId: senderId }
             ]
         }).sort({createdAt: 1});
-        // console.log(messages);
         res.json(messages);
     } catch (error) {
         console.error(error);
@@ -21,4 +20,4 @@ router.get('/messages/:senderId/:receiverId', async (req, res)=>{
     }
 })
 
-module.exports = router;
+module.exports = router; 
